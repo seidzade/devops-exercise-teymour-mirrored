@@ -15,15 +15,17 @@ You'll need a linux machine with the ability to run vms.
 1. Inside the vm execute `nodejs /tmp/bamboo-app/bamboo.js`.
 1. Open your browser, go to <http://localhost:8080>, you should get some information about how much we love bamboo.
 
+Important note: the infrastracture should work out of the box. There's no hidden part of the excersice in which you need to debug vagrant/virtualbox.
+
 #### Ready for action?
 Great.  
 Your project is simple, as a DevOps panda you need to have the ability to develop nanoservices and create a mechanism for deploying them.  
 Below, you can find the description of your tasks.
 
 ###### NodeJS/Python services
-Create two basic NodeJs or Python services, the first is gify-panda which should serve static files from a directory called `resources`. The directory should contain a random number of files. You may use any image that you like, as long as there is a panda over there.
+Create two basic NodeJs or Python services, the first is img-panda which should serve static files from a directory called `resources`. The directory should contain a random number of files. You may use any image that you like, as long as there is a panda over there. The service should return a *random* image on every GET request. 
 
-The second service shall be called counter-panda, and should just maintain a counter of the amount of POST requests it served, and return it on every GET request it gets.
+The second service shall be called smart-panda, and should just maintain a counter of the amount of POST requests it served, and return it on every GET request it gets.
 A sample NodeJS service named bamboo-app already exists  [here](roles/bamboo/files/bamboo-app)
 
 ###### Deployment
@@ -39,10 +41,12 @@ Please make sure you have a decent `--help` in your script.
 #### Deliverables
 A GitHub Pull-Request to **YOUR DUPLICATED REPO**, containing:  
 
-1. The code for both gify-panda and counter-panda.
+1. The code for both img-panda and smart-panda.
 1. Ansible roles which takes care of provisioning both services on a VM called base.
 1. Modified base.yml which install ONLY the newly written services on the base VM.
 1. **BONUS** A wrapper script on top of ansible-playbook which deploys the latest version of those services.
+
+PLEASE make sure your Pull Request contains all the requirments above, and doesn't contain any code you didn't change.
 
 The Pull-Request should contain a short description of the roles you created, and any other comment you’d like us to know of.
 
@@ -53,4 +57,4 @@ Think about operational use cases from the real world. Few examples:
 
 1. Can you run the playbook multiple times without any problem?
 1. What happens if a service crashes?
-1. How much effort will it take to create a new service?
+1. How much effort will it take to create a new service? D.R.Y!
